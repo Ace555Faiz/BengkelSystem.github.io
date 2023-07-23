@@ -1,0 +1,121 @@
+<style type="text/css">
+  /* Styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+/* Styles for the h1 heading */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Styles for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Styles for the table header cells */
+th {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Styles for the table data cells */
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Styles for the table rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Styles for the logout link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Styles for the logout link on hover */
+a:hover {
+    text-decoration: underline;
+}
+/* CSS for the button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* CSS for the anchor tags (buttons) */
+.button-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for buttons */
+.button-container a:hover {
+    background-color: #45a049;
+}
+
+/* Add margin between the buttons for better spacing */
+.button-container a + a {
+    margin-left: 10px;
+}  
+
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" type="text/css" href="include/payment.css">
+</head>
+<body>
+    <h1>Payment Details</h1>
+    <?php if (isset($error_message)) : ?>
+        <p class="error-message"><?php echo $error_message; ?></p>
+    <?php endif; ?>
+
+    <div class="payment-form">
+        <form action="" method="post">
+            <!-- Include payment form fields here -->
+            <p><strong>Booking ID:</strong> <?php echo $booking_id; ?></p>
+            <input type="hidden" name="booking_id" value="<?php echo $booking_id; ?>">
+            <!-- Add payment form fields as needed -->
+            <label for="payment_method">Payment Method:</label>
+            <input name="payment_method" id="payment_method" required>
+            <br>
+            <label for="payment_date">Payment Date:</label>
+            <input type="date" name="payment_date" id="payment_date" value="<?php echo $payment_details['Payment_Date']; ?>" required>
+            <br>
+            <label for="amount_input">Amount:</label>
+            <input type="number" step="0.01" name="amount_input" id="amount_input" placeholder="Enter amount" required value="<?php echo $payment_details['Amount']; ?>">
+            <br>
+            
+     </form>
+    </div>
+
+    <p><a href="account.php" class="back-button">Back to My Account</a></p>
+</body>
+</html>
